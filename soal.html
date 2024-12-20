@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Logika Matematika</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/materi.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <header>Logika Matematika</header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="kalkulator.html">Kalkulator</a></li>
+            <li><a href="soal.html">Quiz</a></li>
+            <li>
+                <a href="#">Materi</a>
+                <ul>
+                    <li><a href="materi4.html">Pernyataan majemuk</a></li>
+                    <li><a href="materi1.html">Kontigensi</a></li>
+                    <li><a href="materi2.html">Kontradiksi</a></li>
+                    <li><a href="materi3.html">Tautologi</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="quiz-container">
+        <div id="quiz">
+            <div class="question" id="question">Pertanyaan akan muncul di sini</div>
+            <ul class="options" id="options">
+                <!-- Opsi akan dimuat di sini -->
+            </ul>
+            <button id="submit">Submit</button>
+        </div>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "Jika p adalah pernyataan \"2 + 2 = 4\", maka negasi dari p adalah:",
+                options: [
+                    "2 + 2 ≠ 4",
+                    "2 + 2 = 4",
+                    "2 + 2 < 4",
+                    "2 + 2 > 4"
+                ],
+                correct: 0,
+                explanation: "Negasi dari \"2 + 2 = 4\" adalah \"2 + 2 ≠ 4\"."
+            },
+            {
+            question: "Manakah nilai kebenaran dari pernyataan \"Jika 3 < 5, maka 5 > 3\":",
+            options: [
+                "Benar",
+                "Salah",
+                "Tidak dapat ditentukan",
+                "Tidak relevan"
+            ],
+            correct: 0,
+            explanation: "Pernyataan \"Jika 3 < 5, maka 5 > 3\" adalah benar karena hubungan logisnya valid."
+        },
+        {
+            question: "Jika p adalah pernyataan \"Hari ini hujan\" dan q adalah pernyataan \"Saya membawa payung\", maka pernyataan \"Jika hari ini hujan, maka saya membawa payung\" ditulis sebagai:",
+            options: [
+                "p ∧ q",
+                "p ∨ q",
+                "p → q",
+                "p ↔ q"
+            ],
+            correct: 2,
+            explanation: "Pernyataan \"Jika p, maka q\" ditulis sebagai p → q."
+        },
+        {
+            question: "Pernyataan \"3 + 3 = 6\" adalah:",
+            options: [
+                "Benar",
+                "Salah",
+                "Tidak dapat ditentukan",
+                "Tidak relevan"
+            ],
+            correct: 0,
+            explanation: "Pernyataan \"3 + 3 = 6\" adalah benar secara matematis."
+        },
+        {
+            question: "Jika p ∨ q bernilai benar, maka pernyataan ini benar jika:",
+            options: [
+                "Hanya p yang benar",
+                "Hanya q yang benar",
+                "Salah satu atau keduanya benar",
+                "Keduanya salah"
+            ],
+            correct: 2,
+            explanation: "Pernyataan \"p ∨ q\" bernilai benar jika salah satu atau kedua p dan q bernilai benar."
+        },
+        {
+            question: "Manakah negasi dari pernyataan \"Semua siswa belajar\":",
+            options: [
+                "Tidak semua siswa belajar",
+                "Semua siswa tidak belajar",
+                "Sebagian siswa tidak belajar",
+                "Tidak ada siswa yang belajar"
+            ],
+            correct: 0,
+            explanation: "Negasi dari \"Semua siswa belajar\" adalah \"Tidak semua siswa belajar\"."
+        },
+        {
+            question: "Pernyataan \"Jika p, maka q\" bernilai salah jika:",
+            options: [
+                "p benar dan q benar",
+                "p salah dan q salah",
+                "p benar dan q salah",
+                "p salah dan q benar"
+            ],
+            correct: 2,
+            explanation: "Pernyataan \"Jika p, maka q\" hanya salah jika p benar dan q salah."
+        },
+        {
+            question: "Pernyataan \"5 > 3\" dan \"3 > 5\" adalah contoh dari:",
+            options: [
+                "Konjungsi",
+                "Disjungsi",
+                "Implikasi",
+                "Negasi"
+            ],
+            correct: 1,
+            explanation: "Pernyataan \"5 > 3\" atau \"3 > 5\" adalah contoh disjungsi."
+        },
+        {
+            question: "Jika p adalah \"x > 5\" dan q adalah \"x < 10\", maka p ∧ q adalah:",
+            options: [
+                "x > 10",
+                "x < 5",
+                "5 < x < 10",
+                "x ≥ 10"
+            ],
+            correct: 2,
+            explanation: "Pernyataan p ∧ q berarti x harus lebih besar dari 5 dan kurang dari 10."
+        },
+        {
+            question: "Pernyataan \"Jika x adalah bilangan genap, maka x + 1 adalah bilangan ganjil\" bernilai:",
+            options: [
+                "Benar",
+                "Salah",
+                "Tidak dapat ditentukan",
+                "Tidak relevan"
+            ],
+            correct: 0,
+            explanation: "Pernyataan benar karena menambahkan 1 ke bilangan genap akan menghasilkan bilangan ganjil."
+        },
+        {
+            question: "Manakah contoh dari tautologi:",
+            options: [
+                "p ∨ ¬p",
+                "p ∧ ¬p",
+                "p → p",
+                "¬(p ∨ ¬p)"
+            ],
+            correct: 0,
+            explanation: "Tautologi adalah pernyataan yang selalu benar, seperti p ∨ ¬p."
+        },
+        {
+            question: "Manakah contoh dari kontradiksi:",
+            options: [
+                "p ∨ ¬p",
+                "p ∧ ¬p",
+                "p → p",
+                "p ∨ q"
+            ],
+            correct: 1,
+            explanation: "Kontradiksi adalah pernyataan yang selalu salah, seperti p ∧ ¬p."
+        },
+        {
+            question: "Manakah pernyataan berikut yang merupakan kontingensi:",
+            options: [
+                "p ∨ ¬p",
+                "p ∧ ¬p",
+                "p ∧ q",
+                "¬(p ∧ q)"
+            ],
+            correct: 2,
+            explanation: "Kontingensi adalah pernyataan yang bernilai benar atau salah tergantung nilai kebenaran variabelnya, seperti p ∧ q."
+        }
+        ];
+    
+        let currentQuestion = 0;
+        let score = 0; // Variabel untuk melacak skor pengguna
+    
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const resultEl = document.getElementById('result');
+        const submitBtn = document.getElementById('submit');
+    
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestion];
+            questionEl.textContent = currentQuiz.question;
+            optionsEl.innerHTML = '';
+            currentQuiz.options.forEach((option, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<label><input type="radio" name="option" value="${index}"> ${option}</label>`;
+                optionsEl.appendChild(li);
+            });
+        }
+    
+        function checkAnswer() {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            if (!selectedOption) {
+                alert('Pilih salah satu jawaban!');
+                return;
+            }
+    
+            const answer = parseInt(selectedOption.value);
+            const currentQuiz = quizData[currentQuestion];
+    
+            if (answer === currentQuiz.correct) {
+                resultEl.textContent = 'Benar! ' + currentQuiz.explanation;
+                resultEl.className = 'result correct';
+                score++; // Tambahkan skor jika jawaban benar
+            } else {
+                resultEl.textContent = 'Salah! ' + currentQuiz.explanation;
+                resultEl.className = 'result incorrect';
+            }
+    
+            resultEl.style.display = 'block';
+            submitBtn.textContent = 'Pertanyaan Berikutnya';
+        }
+    
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+                resultEl.style.display = 'none';
+                submitBtn.textContent = 'Submit';
+            } else {
+                questionEl.textContent = `Quiz selesai! Skor Anda: ${score}/${quizData.length}`;
+                optionsEl.innerHTML = '';
+                submitBtn.style.display = 'none';
+                resultEl.style.display = 'none';
+            }
+        }
+    
+        submitBtn.addEventListener('click', () => {
+            if (submitBtn.textContent === 'Submit') {
+                checkAnswer();
+            } else {
+                nextQuestion();
+            }
+        });
+    
+        loadQuestion();
+    </script>
+</body>
+</html>

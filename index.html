@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logika Matematika</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+
+        .team {
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+            margin: 2em 0;
+        }
+        .team-member {
+            text-align: center;
+            background-color: #dff9fb;
+            border-radius: 10px;
+            padding: 1em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        h2 {
+            text-align: center;
+            color: #4a69bd;
+        }
+        .materi {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1em;
+            margin: 2em auto;
+            width: 80%;
+        }
+        .materi-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .materi-card h3 {
+            color: #4a69bd;
+        }
+    </style>
+</head>
+<body>
+    <header>Logika Matematika</header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="kalkulator.html">Kalkulator</a></li>
+            <li><a href="soal.html">Quiz</a></li>
+            <li>
+                <a href="#">Materi</a>
+                <ul>
+                    <li><a href="materi4.html">Pernyataan majemuk</a></li>
+                    <li><a href="materi1.html">Kontigensi</a></li>
+                    <li><a href="materi2.html">Kontradiksi</a></li>
+                    <li><a href="materi3.html">Tautologi</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+    <h2>Kelompok 1</h2>
+    <div class="team">
+        <div class="team-member">
+            <img src="foto/jojo.jpeg" alt="Member 1">
+            <p><strong>Gabriel Jonathan</strong></p>  
+            <p>NIM: 1062442</p>
+        </div>
+        <div class="team-member">
+            <img src="foto/adel.jpeg" alt="Member 2">
+            <p><strong>Adelia Syawitri</strong></p>
+            <p>NIM: 1062431</p>
+        </div>
+        <div class="team-member">
+            <img src="foto/nadia.png" alt="Member 3">
+            <p><strong>Nadia Salma</strong></p>
+            <p>NIM: 1062451</p>
+        </div>
+    </div>
+
+    <h2>Materi</h2>
+    <div class="materi">
+        <div class="materi-card" id="konjungsi">
+            <h3>Konjungsi</h3>
+            <p>Konjungsi adalah operasi logika yang menyatakan "dan". Ditulis sebagai p &and; q.</p>
+        </div>
+        <div class="materi-card" id="diskonjungsi">
+            <h3>Disjungsi</h3>
+            <p>Disjungsi menyatakan "atau". Ditulis sebagai p &or; q.</p>
+        </div>
+        <div class="materi-card">
+            <h3>Implikasi</h3>
+            <p>Implikasi menyatakan "jika p maka q". Ditulis sebagai p &rarr; q.</p>
+        </div>
+        <div class="materi-card">
+            <h3>Biimplikasi</h3>
+            <p>Biimplikasi menyatakan "jika dan hanya jika". Ditulis sebagai p &harr; q.</p>
+        </div>
+        <div class="materi-card">
+            <h3>Negasi</h3>
+            <p>Negasi menyatakan "bukan". Ditulis sebagai &not;p.</p>
+        </div>
+        <div class="materi-card" id="tautologi">
+            <h3>Tautologi</h3>
+            <p>Tautologi adalah pernyataan logika yang selalu benar untuk semua nilai kebenaran.</p>
+        </div>
+        <div class="materi-card">
+            <h3>Kontigensi</h3>
+            <p>adalah pernyataan majemuk yang tidak selalu bernilai BENAR dan tidak selalu bernilai SALAH (bukan tautologi dan bukan kontradiksi) untuk semua kemungkinan nilai kebenaran komponen-komponennya. Artinya dalam kontingensi, nilai kebenarannya sekaligus memuat BENAR dan SALAH.</p>
+        </div>
+        <div class="materi-card">
+            <h3>Kontradiksi</h3>
+            <p>adalah pernyataan majemuk yang selalu bernilai SALAH untuk semua kemungkinan nilai kebenaran komponen-komponennya.</p>
+        </div>
+    </div>
+</body>
+</html>

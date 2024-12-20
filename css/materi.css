@@ -1,0 +1,27 @@
+.section {
+    margin: 2em auto;
+    text-align: center;
+}
+.section video {
+    width: 80%;
+    max-width: 720px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+.section h2 {
+    color: #4a69bd;
+    margin-bottom: 1em;
+}
+.summary {
+    margin: 2em auto;
+    width: 80%;
+    background-color: #dff9fb;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: left;
+}
+.summary h3 {
+    color: #4a69bd;
+}

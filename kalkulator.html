@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Logika</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+       
+        .container {
+            margin: 2em auto;
+            padding: 1em;
+            width: 80%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #4a69bd;
+        }
+        label, select, input, button {
+            display: block;
+            margin: 1em auto;
+            width: 90%;
+            max-width: 400px;
+            font-size: 16px;
+        }
+        select {
+            padding: 0.5em;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+        select:focus {
+            border-color: #4a69bd;
+        }
+        input {
+            padding: 0.5em;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #4a69bd;
+        }
+        button {
+            background-color: #4a69bd;
+            color: white;
+            padding: 0.7em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #6a89cc;
+        }
+        table {
+            margin: 2em auto;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 0.5em;
+        }
+        .steps {
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #dff9fb;
+            border-radius: 8px;
+            width: 80%;
+        }
+        .result {
+            text-align: center;
+            margin-top: 1em;
+            font-weight: bold;
+            color: #4a69bd;
+        }
+    </style>
+</head>
+<body>
+    <header>Kalkulator Logika</header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="kalkulator.html">Kalkulator</a></li>
+            <li><a href="soal.html">Quiz</a></li>
+            <li>
+                <a href="#">Materi</a>
+                <ul>
+                    <li><a href="materi4.html">Pernyataan majemuk</a></li>
+                    <li><a href="materi1.html">Kontigensi</a></li>
+                    <li><a href="materi2.html">Kontradiksi</a></li>
+                    <li><a href="materi3.html">Tautologi</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Kalkulator Logika Matematika</h2>
+        <label for="operation">Pilih Jenis Operasi:</label>
+        <select id="operation">
+            <option value="tautologi">Tautologi</option>
+            <option value="kontigensi">Kontigensi</option>
+            <option value="kontradiksi">Kontradiksi</option>
+        </select>
+        
+        <label for="expression">Masukkan Ekspresi (contoh: a ∧ b, ¬a ∨ b):</label>
+        <input type="text" id="expression" placeholder="a ∧ b" required>
+        <button onclick="calculateTable()">Hitung Tabel Kebenaran</button>
+
+        <h3>Hasil Tabel Kebenaran:</h3>
+        <table id="truthTable"></table>
+
+        <div class="steps" id="steps">
+            <h3>Penjelasan Proses:</h3>
+            <p id="processExplanation">Masukkan ekspresi dan pilih jenis operasi untuk melihat langkah-langkah.</p>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <script src="script1.js"></script>
+</body>
+</html>
